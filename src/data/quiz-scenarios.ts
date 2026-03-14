@@ -73,25 +73,25 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
-        command: "git branch feature",
-        explanation:
-          "Correct ! git branch crée une nouvelle branche pointant vers le commit actuel.",
-      },
-      {
         command: "git checkout feature",
         explanation:
           "Non, checkout change de branche mais ne la crée pas (sauf avec -b).",
       },
       {
-        command: 'git commit -m "feature"',
-        explanation: "Non, commit crée un nouveau noeud, pas une branche.",
-      },
-      {
         command: "git merge feature",
         explanation: "Non, merge fusionne une branche qui doit déjà exister.",
       },
+      {
+        command: "git branch feature",
+        explanation:
+          "Correct ! git branch crée une nouvelle branche pointant vers le commit actuel.",
+      },
+      {
+        command: 'git commit -m "feature"',
+        explanation: "Non, commit crée un nouveau noeud, pas une branche.",
+      },
     ],
-    correctIndex: 0,
+    correctIndex: 2,
   },
   {
     id: 3,
@@ -113,13 +113,13 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
+        command: "git branch feature",
+        explanation: "Non, branch crée une branche, elle ne change pas HEAD.",
+      },
+      {
         command: "git checkout feature",
         explanation:
           "Correct ! checkout déplace HEAD vers la branche spécifiée.",
-      },
-      {
-        command: "git branch feature",
-        explanation: "Non, branch crée une branche, elle ne change pas HEAD.",
       },
       {
         command: "git merge feature",
@@ -131,7 +131,7 @@ export const quizScenarios: QuizScenario[] = [
           "Non, reset déplace le pointeur de branche, pas HEAD vers une autre branche.",
       },
     ],
-    correctIndex: 0,
+    correctIndex: 1,
   },
 
   // 4-6: Intermediate
@@ -190,11 +190,6 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
-        command: "git stash",
-        explanation:
-          "Correct ! stash met les modifications de côté sans les supprimer définitivement.",
-      },
-      {
         command: "git reset --hard HEAD",
         explanation:
           "Non, reset --hard supprimerait les modifications définitivement.",
@@ -209,8 +204,13 @@ export const quizScenarios: QuizScenario[] = [
         explanation:
           "Non, checkout -- restaure les fichiers et perd les modifications.",
       },
+      {
+        command: "git stash",
+        explanation:
+          "Correct ! stash met les modifications de côté sans les supprimer définitivement.",
+      },
     ],
-    correctIndex: 0,
+    correctIndex: 3,
   },
   {
     id: 6,
@@ -227,13 +227,13 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
+        command: "git stash",
+        explanation: "Non, stash les mettrait de côté, pas les récupérerait.",
+      },
+      {
         command: "git stash pop",
         explanation:
           "Correct ! stash pop récupère les modifications mises de côté et les remet dans le working directory.",
-      },
-      {
-        command: "git stash",
-        explanation: "Non, stash les mettrait de côté, pas les récupérerait.",
       },
       {
         command: "git checkout .",
@@ -245,7 +245,7 @@ export const quizScenarios: QuizScenario[] = [
         explanation: "Non, reset --mixed ne touche pas au stash.",
       },
     ],
-    correctIndex: 0,
+    correctIndex: 1,
   },
 
   // 7-9: Advanced
@@ -264,27 +264,27 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
-        command: "git reset --soft HEAD~1",
-        explanation:
-          "Correct ! reset --soft recule la branche mais garde les modifications dans la staging area.",
-      },
-      {
         command: "git reset --hard HEAD~1",
         explanation:
           "Non, --hard supprimerait aussi les fichiers du working directory et de la staging area.",
-      },
-      {
-        command: "git reset --mixed HEAD~1",
-        explanation:
-          "Non, --mixed garderait les fichiers dans le working directory mais pas dans la staging area.",
       },
       {
         command: "git revert HEAD",
         explanation:
           "Non, revert crée un nouveau commit d'annulation, il ne recule pas la branche.",
       },
+      {
+        command: "git reset --soft HEAD~1",
+        explanation:
+          "Correct ! reset --soft recule la branche mais garde les modifications dans la staging area.",
+      },
+      {
+        command: "git reset --mixed HEAD~1",
+        explanation:
+          "Non, --mixed garderait les fichiers dans le working directory mais pas dans la staging area.",
+      },
     ],
-    correctIndex: 0,
+    correctIndex: 2,
   },
   {
     id: 8,
@@ -344,11 +344,6 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
-        command: "git stash && git checkout feature && git stash pop",
-        explanation:
-          "Correct ! stash sauvegarde, checkout change de branche, stash pop restaure les fichiers.",
-      },
-      {
         command: "git checkout feature",
         explanation:
           "Non, sans stash les modifications non commitées pourraient être perdues ou empêcher le checkout.",
@@ -363,8 +358,13 @@ export const quizScenarios: QuizScenario[] = [
         explanation:
           "Non, reset --soft ne change pas de branche de cette façon.",
       },
+      {
+        command: "git stash && git checkout feature && git stash pop",
+        explanation:
+          "Correct ! stash sauvegarde, checkout change de branche, stash pop restaure les fichiers.",
+      },
     ],
-    correctIndex: 0,
+    correctIndex: 3,
   },
 
   // 10: Trap question
@@ -383,14 +383,14 @@ export const quizScenarios: QuizScenario[] = [
     },
     options: [
       {
-        command: "git checkout B",
-        explanation:
-          "Correct ! Checkout vers un commit (pas une branche) met HEAD en mode détaché — c'est le fameux 'detached HEAD'.",
-      },
-      {
         command: "git reset --hard B",
         explanation:
           "Non, reset --hard déplacerait la branche main vers B, HEAD resterait attaché à main.",
+      },
+      {
+        command: "git checkout B",
+        explanation:
+          "Correct ! Checkout vers un commit (pas une branche) met HEAD en mode détaché — c'est le fameux 'detached HEAD'.",
       },
       {
         command: "git branch -d main",
@@ -402,6 +402,6 @@ export const quizScenarios: QuizScenario[] = [
         explanation: "Non, stash ne change pas la position de HEAD.",
       },
     ],
-    correctIndex: 0,
+    correctIndex: 1,
   },
 ];

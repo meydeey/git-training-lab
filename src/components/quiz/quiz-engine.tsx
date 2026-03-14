@@ -35,7 +35,6 @@ export function QuizEngine() {
 
   const scenario = quizScenarios[currentIndex];
   const isAnswered = selectedOption !== null;
-  const isCorrect = selectedOption === scenario.correctIndex;
 
   const handleSelect = (index: number) => {
     if (isAnswered) return;
